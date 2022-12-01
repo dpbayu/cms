@@ -1,5 +1,6 @@
 <!-- PHP Start -->
 <?php
+session_start();
 require_once "../includes/db.php";
 ?>
 <!-- PHP End -->
