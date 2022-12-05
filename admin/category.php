@@ -28,12 +28,24 @@ include_once "../includes/db.php";
                 <div class="container-fluid">
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Category</h1>
+                    <button type="button" data-toggle="modal" data-target="#form-modal" class="btn btn-primary mb-3">Add
+                        Data Category</button>
                     <!-- Table Start -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Tambah Data</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Data Category</h6>
                         </div>
                         <div class="card-body">
+                            <?php
+                            if (isset($_GET['message'])) {
+                                $msg = $_GET['message'];
+                                echo '
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <strong>'.$msg.'</strong>
+                                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+                                </div>';
+                            }
+                            ?>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
@@ -53,10 +65,10 @@ include_once "../includes/db.php";
                                             <td><?php echo $no++; ?></td>
                                             <td><?php echo $row['category_name']; ?></td>
                                             <td>
-                                                <a href="#" class="btn btn-warning btn-circle btn-sm mr-1">
+                                                <a href="#" class="btn btn-warning btn-sm mr-1">
                                                     <i class="fas fa-pen"></i>
                                                 </a>
-                                                <a href="#" class="btn btn-danger btn-circle btn-sm">
+                                                <a href="#" class="btn btn-danger btn-sm">
                                                     <i class="fas fa-trash"></i>
                                                 </a>
                                             </td>
@@ -82,6 +94,33 @@ include_once "../includes/db.php";
             <!-- Footer Start -->
             <?php include_once("footer.php") ?>
             <!-- Footer End -->
+            <!-- Modal Start -->
+            <div class="modal" id="form-modal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Form Category</h5>
+                            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="save_category.php" method="POST">
+                                <div class="form-group">
+                                    <label for="category">Nama Category</label>
+                                    <input type="text" class="form-control" id="category" name="category_name"
+                                        placeholder="Insert your category">
+                                </div>
+                                <button type="submit" name="submit" class="btn btn-primary">Save</button>
+                                <button type="reset" name="reset" class="btn btn-danger">Reset</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal End -->
         </div>
         <!-- Content Wrapper End -->
     </div>
