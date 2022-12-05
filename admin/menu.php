@@ -12,7 +12,7 @@
     <!-- Divider End -->
     <!-- Nav Item - Dashboard Start -->
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="index.php">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
         </a>
@@ -23,17 +23,17 @@
     <!-- Divider End -->
     <!-- Heading Start -->
     <div class="sidebar-heading">
-        Interface
+        <p class="mt-3">INTERFACE</p>
     </div>
     <!-- Heading End -->
     <li class="nav-item">
-        <a class="nav-link"><i class="fas fa-fw fa-cog"></i><span>Category</span></a>
+        <a class="nav-link" href="category.php"><i class="fas fa-fw fa-cog"></i><span>Category</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link"><i class="fas fa-fw fa-wrench"></i><span>News</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="tables.html"><i class="fas fa-fw fa-table"></i><span>Pages</span></a>
+        <a class="nav-link"><i class="fas fa-fw fa-table"></i><span>Pages</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="tables.html"><i class="fas fa-fw fa-table"></i><span>Profile</span></a>
