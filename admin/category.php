@@ -65,10 +65,13 @@ include_once "../includes/db.php";
                                             <td><?php echo $no++; ?></td>
                                             <td><?php echo $row['category_name']; ?></td>
                                             <td>
-                                                <a href="edit_category.php?id=<?php echo $row['category_id']; ?>" class="btn btn-warning btn-sm mr-1">
+                                                <a href="edit_category.php?id=<?php echo $row['category_id']; ?>"
+                                                    class="btn btn-warning btn-sm mr-1">
                                                     <i class="fas fa-pen"></i>
                                                 </a>
-                                                <a href="#" class="btn btn-danger btn-sm">
+                                                <a onclick="return confirm('Are you sure delete this data ?')"
+                                                    href="delete_category.php?id=<?php echo $row['category_id']; ?>"
+                                                    class="btn btn-danger btn-sm">
                                                     <i class="fas fa-trash"></i>
                                                 </a>
                                             </td>
