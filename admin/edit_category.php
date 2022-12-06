@@ -1,10 +1,9 @@
-<!-- PHP Start -->
+<!-- Start PHP -->
 <?php
 session_start();
 include_once "../includes/db.php";
+if (isset($_GET['id'])) {
 ?>
-<!-- PHP End -->
-
 <!DOCTYPE html>
 <html lang="en">
 <!-- Header Start -->
@@ -28,14 +27,17 @@ include_once "../includes/db.php";
                 <div class="container-fluid">
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Category</h1>
-                    <button type="button" data-toggle="modal" data-target="#form-modal" class="btn btn-primary mb-3">Add
-                        Data Category</button>
-                    <!-- Table Start -->
+                    <!-- Form Edit Category Start -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Data Category</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Edit Data Category</h6>
                         </div>
                         <div class="card-body">
+                            <?php
+                        $category_id = $_GET['id'];
+                        $sql = "SELECT * FROM category WHERE category_id = '$category_id'";
+                        $result = mysqli_query($db, $sql);
+                        while ($row = mysqli_fetch_assoc($result)) { ?>
                             <?php
                             if (isset($_GET['message'])) {
                                 $msg = $_GET['message'];
@@ -46,47 +48,39 @@ include_once "../includes/db.php";
                                 </div>';
                             }
                             ?>
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Name Category</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php 
-                                        $no = 1;
-                                        $sql = "SELECT * FROM category ORDER BY category_id DESC";
-                                        $result = mysqli_query($db, $sql);
-                                        while ($row = mysqli_fetch_assoc($result)) { ?>
-                                        <tr>
-                                            <td><?php echo $no++; ?></td>
-                                            <td><?php echo $row['category_name']; ?></td>
-                                            <td>
-                                                <a href="edit_category.php?id=<?php echo $row['category_id']; ?>" class="btn btn-warning btn-sm mr-1">
-                                                    <i class="fas fa-pen"></i>
-                                                </a>
-                                                <a href="#" class="btn btn-danger btn-sm">
-                                                    <i class="fas fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <?php } ?>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Name Category</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
+                            <form action="" method="POST">
+                                <div class="form-group">
+                                    <label for="category">Name Category</label>
+                                    <input type="text" class="form-control" id="category" name="category_name"
+                                        value="<?php echo $row['category_name']; ?>">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" name="submit" class="btn btn-primary">Update</button>
+                                    <button type="reset" name="reset" class="btn btn-danger">Reset</button>
+                                </div>
+                            </form>
+                            <?php } ?>
+                            <?php
+                                if (isset($_POST['submit'])) {
+                                    $category_name = mysqli_real_escape_string($db, $_POST['category_name']);
+                                    if (empty($category_name)) {
+                                        echo "<script>window.location = 'category.php?message=Please insert your data'</script>";
+                                        exit();
+                                    } else {
+                                        $sql = "UPDATE category SET category_name = '$category_name' WHERE category_id = '$category_id'";
+                                        if (mysqli_query($db, $sql)) {
+                                            echo "<script>window.location = 'category.php?message=Data update success'</script>";
+                                            exit();
+                                        } else {
+                                            echo "<script>window.location = 'category.php?message=Data update failed'</script>";
+                                            exit();
+                                        }
+                                    }
+                                }
+                            ?>
                         </div>
                     </div>
-                    <!-- Table End -->
+                    <!-- Form Edit Category End -->
                 </div>
                 <!-- Container Fluid End -->
             </div>
@@ -94,31 +88,6 @@ include_once "../includes/db.php";
             <!-- Footer Start -->
             <?php include_once("footer.php") ?>
             <!-- Footer End -->
-            <!-- Modal Start -->
-            <div class="modal" id="form-modal" tabindex="-1">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Form Category</h5>
-                            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="save_category.php" method="POST">
-                                <div class="form-group">
-                                    <label for="category">Name Category</label>
-                                    <input type="text" class="form-control" id="category" name="category_name"
-                                        placeholder="Insert your category">
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="submit" name="submit" class="btn btn-primary">Add</button>
-                                    <button type="reset" name="reset" class="btn btn-danger">Reset</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Modal End -->
         </div>
         <!-- Content Wrapper End -->
     </div>
@@ -168,3 +137,7 @@ include_once "../includes/db.php";
 </body>
 
 </html>
+<?php
+}
+?>
+<!-- End PHP -->
