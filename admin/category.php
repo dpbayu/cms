@@ -97,7 +97,7 @@ include_once "../includes/db.php";
             <!-- Footer Start -->
             <?php include_once("footer.php") ?>
             <!-- Footer End -->
-            <!-- Modal Start -->
+            <!-- Form Modal Start -->
             <div class="modal" id="form-modal" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -121,7 +121,7 @@ include_once "../includes/db.php";
                     </div>
                 </div>
             </div>
-            <!-- Modal End -->
+            <!-- Form Modal End -->
         </div>
         <!-- Content Wrapper End -->
     </div>

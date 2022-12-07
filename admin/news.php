@@ -28,12 +28,11 @@ include_once "../includes/db.php";
                 <div class="container-fluid">
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">News</h1>
-                    <button type="button" data-toggle="modal" data-target="#form-modal" class="btn btn-primary mb-3">Add
-                        Data Category</button>
+                    <a href="form_news.php" class="btn btn-primary mb-3">Add Data News</a>
                     <!-- Table Start -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Data Category</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Data News</h6>
                         </div>
                         <div class="card-body">
                             <?php
@@ -131,21 +130,6 @@ include_once "../includes/db.php";
         </div>
     </div>
     <!-- Logout Modal End-->
-
-    <!-- JS Start -->
-    <!-- Bootstrap core JavaScript-->
-    <script src="assets/vendor/jquery/jquery.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="assets/js/sb-admin-2.min.js"></script>
-    <!-- Page level plugins -->
-    <script src="assets/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-    <!-- Page level custom scripts -->
-    <script src="assets/js/demo/datatables-demo.js"></script>
-    <!-- JS End -->
 </body>
 
 </html>

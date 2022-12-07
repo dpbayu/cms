@@ -30,7 +30,7 @@
         <a class="nav-link" href="category.php"><i class="fas fa-fw fa-cog"></i><span>Category</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="new.php"><i class="fas fa-fw fa-wrench"></i><span>News</span></a>
+        <a class="nav-link" href="news.php"><i class="fas fa-fw fa-wrench"></i><span>News</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link"><i class="fas fa-fw fa-table"></i><span>Pages</span></a>
