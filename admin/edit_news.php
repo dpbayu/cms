@@ -31,7 +31,7 @@ $news_images = $row['news_images'];
                 <!-- Topbar End -->
                 <!-- Container Fluid Start -->
                 <div class="container-fluid">
-                    <form action="save_news.php" method="POST" enctype="multipart/form-data">
+                    <form action="save_news.php?id=<?php echo $row['news_id'] ?>" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="title">Title News</label>
                             <input type="text" class="form-control" id="title" name="news_title"
@@ -56,7 +56,7 @@ $news_images = $row['news_images'];
                             <textarea id="description" class="form-control" name="news_content"><?php echo $news_content ?></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="image">Image News</label>
+                            <label for="image">Image News</label><br>
                             <input type="file" id="image" name="file"><br>
                             <img class="mt-2" src="../uploads/<?php echo $news_images ?>" width="200px">
                         </div>
