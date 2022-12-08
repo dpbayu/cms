@@ -33,7 +33,7 @@
         <a class="nav-link" href="news.php"><i class="fas fa-fw fa-wrench"></i><span>News</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link"><i class="fas fa-fw fa-table"></i><span>Pages</span></a>
+        <a class="nav-link" href="pages.php"><i class="fas fa-fw fa-table"></i><span>Pages</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="tables.html"><i class="fas fa-fw fa-table"></i><span>Profile</span></a>
