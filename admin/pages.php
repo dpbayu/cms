@@ -28,7 +28,8 @@ include_once "../includes/db.php";
                 <div class="container-fluid">
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Pages</h1>
-                    <a href="form_news.php" class="btn btn-primary mb-3">Add Data Pages</a>
+                    <button type="button" data-toggle="modal" data-target="#form-modal" class="btn btn-primary mb-3">Add
+                        Data Pages</button>
                     <!-- Table Start -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -96,6 +97,36 @@ include_once "../includes/db.php";
             <!-- Footer Start -->
             <?php include_once("footer.php") ?>
             <!-- Footer End -->
+            <!-- Form Modal Start -->
+            <div class="modal" id="form-modal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Form Category</h5>
+                            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="save_pages.php" method="POST">
+                                <div class="form-group">
+                                    <label for="name">Name Pages Website</label>
+                                    <input type="text" class="form-control" id="name" name="pages_name"
+                                        placeholder="Insert your pages">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Description Pages Website</label>
+                                    <textarea type="text" class="form-control" id="name" name="description"
+                                        placeholder="Insert your description"></textarea>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" name="submit" class="btn btn-primary">Add</button>
+                                    <button type="reset" name="reset" class="btn btn-danger">Reset</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Form Modal End -->
         </div>
         <!-- Content Wrapper End -->
     </div>
