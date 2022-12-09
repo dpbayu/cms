@@ -1,6 +1,8 @@
 <!-- PHP Start -->
 <?php
 session_start();
+include_once "../includes/db.php";
+if (isset($_SESSION['user_role']))
 ?>
 <!-- PHP End -->
 
@@ -44,7 +46,14 @@ session_start();
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Categories
                                             </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                <?php
+                                                    $sql = "SELECT * FROM category";
+                                                    $query = mysqli_query($db, $sql);
+                                                    $count = mysqli_num_rows($query);
+                                                    echo "$count";
+                                                ?>
+                                            </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-solid fa-coins fa-2x text-gray-300"></i>
@@ -63,7 +72,14 @@ session_start();
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 News
                                             </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                <?php
+                                                    $sql = "SELECT * FROM news";
+                                                    $query = mysqli_query($db, $sql);
+                                                    $count = mysqli_num_rows($query);
+                                                    echo "$count";
+                                                ?>
+                                            </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-sharp fa-solid fa-newspaper fa-2x text-gray-300"></i>
@@ -84,13 +100,13 @@ session_start();
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="progress progress-sm mr-2">
-                                                        <div class="progress-bar bg-info" role="progressbar"
-                                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                                        <?php
+                                                    $sql = "SELECT * FROM pages";
+                                                    $query = mysqli_query($db, $sql);
+                                                    $count = mysqli_num_rows($query);
+                                                    echo "$count";
+                                                ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -103,15 +119,22 @@ session_start();
                             </div>
                         </div>
                         <!-- Pages Card End -->
-                        <!-- Pending Requests Card Start -->
+                        <!-- User Card Start -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-warning shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Pending Requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                                User</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                <?php
+                                                    $sql = "SELECT * FROM user";
+                                                    $query = mysqli_query($db, $sql);
+                                                    $count = mysqli_num_rows($query);
+                                                    echo "$count";
+                                                ?>
+                                            </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -120,7 +143,7 @@ session_start();
                                 </div>
                             </div>
                         </div>
-                        <!-- Pending Requests Card End -->
+                        <!-- User Card End -->
                     </div>
                     <!-- Content End -->
                 </div>
