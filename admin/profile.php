@@ -39,8 +39,7 @@ include_once "../includes/db.php";
                         </div>
                         <div class="form-group">
                             <label for="password">User Password</label>
-                            <input type="text" class="form-control" id="password" name="user_password"
-                                value="<?php echo $_SESSION['user_password'] ?>">
+                            <input type="text" class="form-control" id="password" name="user_password">
                         </div>
                         <div class="form-group">
                             <label for="description">User Description</label>
@@ -52,6 +51,47 @@ include_once "../includes/db.php";
                             <button type="reset" name="reset" class="btn btn-danger">Reset</button>
                         </div>
                     </form>
+                    <?php
+                        if (isset($_POST['update'])) {
+                            $user_name = mysqli_real_escape_string($db, $_POST['user_name']);
+                            $user_email = mysqli_real_escape_string($db, $_POST['user_email']);
+                            $user_password = mysqli_real_escape_string($db, $_POST['user_password']);
+                            $user_description = mysqli_real_escape_string($db, $_POST['user_description']);
+                            if (empty($user_name) OR empty($user_email) OR empty($user_description)) {
+                                echo "Field still empty";
+                            } else {
+                                if (!filter_var($user_email, FILTER_VALIDATE_EMAIL)) {
+                                    echo "Email not valid";
+                                } else {
+                                    if (empty($user_password)) {
+                                        $user_id = $_SESSION['user_id'];
+                                        $sql = "UPDATE user SET user_name = '$user_name', user_email = '$user_email', user_description = '$user_description' WHERE user_id = '$user_id'";
+                                        if (mysqli_query($db, $sql)) {
+                                            $_SESSION['user_name'] = $user_name;
+                                            $_SESSION['user_email'] = $user_email;
+                                            $_SESSION['user_description'] = $user_description;
+                                            echo "<script type='text/javascript'>document.location.href = 'profile.php';</script>";
+                                        } else {
+                                            echo "Error";
+                                        }
+                                    } else {
+                                        $hash = password_hash($user_password, PASSWORD_DEFAULT);
+                                        $user_id = $_SESSION['user_id'];
+                                        $sql2 = "UPDATE user SET user_name = '$user_name', user_email = '$user_email', user_description = '$user_description', user_password = '$hash' WHERE user_id = '$user_id'";
+                                        if (mysqli_query($db, $sql2)) {
+                                            session_unset();
+                                            session_destroy();
+                                            echo "<script>alert('Password success changed, please login again');
+                                            document.location.href = 'login.php';
+                                            </script>";
+                                        } else {
+                                            echo "error";
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ?>
                 </div>
                 <!-- Container Fluid End -->
             </div>
@@ -84,7 +124,7 @@ include_once "../includes/db.php";
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="login.php">Logout</a>
                 </div>
             </div>
         </div>
