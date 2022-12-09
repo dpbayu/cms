@@ -106,7 +106,7 @@ include_once "../includes/db.php";
                             <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form action="save_pages.php" method="POST">
+                            <form action="function.php" method="POST">
                                 <div class="form-group">
                                     <label for="name">Name Pages Website</label>
                                     <input type="text" class="form-control" id="name" name="pages_name"
@@ -118,7 +118,7 @@ include_once "../includes/db.php";
                                         placeholder="Insert your description"></textarea>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" name="submit" class="btn btn-primary">Add</button>
+                                    <button type="submit" name="add-pages" class="btn btn-primary">Add</button>
                                     <button type="reset" name="reset" class="btn btn-danger">Reset</button>
                                 </div>
                             </form>

@@ -51,4 +51,19 @@ if (isset($_POST['add-category'])) {
     }
 }
 // Function Add Category End
+
+// Function Add Pages Start
+if (isset($_POST['add-pages'])) {
+    $pages_name = $_POST['pages_name'];
+    $description = $_POST['description'];
+    $sql = "INSERT INTO pages VALUES ('', '$pages_name', '$description')";
+    if (mysqli_query($db, $sql)) {
+        header("Location: pages.php?message=Data succes");
+        exit();
+    } else {
+        header("Location: pages.php?message=Data failed");
+        exit();
+    }
+}
+// Function Add Pages End
 ?>
