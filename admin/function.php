@@ -37,4 +37,18 @@ if (isset($_POST['login'])) {
     }
 }
 // Function Login End
+
+// Function Add Category Start
+if (isset($_POST['add-category'])) {
+    $category_name = $_POST['category_name'];
+    $sql = "INSERT INTO category VALUES ('', '$category_name')";
+    if (mysqli_query($db, $sql)) {
+        header("Location: category.php?message=Data succes");
+        exit();
+    } else {
+        header("Location: category.php?message=Data failed");
+        exit();
+    }
+}
+// Function Add Category End
 ?>
