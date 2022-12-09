@@ -42,7 +42,7 @@ require_once "../includes/db.php";
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
                                     <!-- Form Start -->
-                                    <form method="POST" action="" class="user">
+                                    <form method="POST" action="function.php" class="user">
                                         <div class="form-group">
                                             <input type="email" name="user_email" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
@@ -64,40 +64,6 @@ require_once "../includes/db.php";
                                             Login
                                         </button>
                                     </form>
-                                    <?php
-                                        if (isset($_POST['submit'])) {
-                                            $user_email = mysqli_escape_string($db, $_POST['user_email']);
-                                            $user_password = mysqli_escape_string($db, $_POST['user_password']);
-                                            if (!filter_var($user_email, FILTER_VALIDATE_EMAIL)) {
-                                                header("Location: login.php?message=Masukan email yang benar");
-                                                exit();
-                                            } else {
-                                                // pengecekan email
-                                                $sql = "SELECT * FROM user WHERE user_email = '$user_email'";
-                                                $result = mysqli_query($db, $sql);
-                                                if (mysqli_num_rows($result) <=0 ) {
-                                                    header("Location: login.php?message=Login Gagal");
-                                                    exit();
-                                                } else {
-                                                    while ($row = mysqli_fetch_assoc($result)) {
-                                                        if (!password_verify($user_password, $row['user_password'])) {
-                                                            header("Location: login.php?message=Password Salah");
-                                                            exit();
-                                                        } else if (password_verify($user_password, $row['user_password'])) {
-                                                            $_SESSION['user_id'] = $row['user_id'];
-                                                            $_SESSION['user_name'] = $row['user_name'];
-                                                            $_SESSION['user_email'] = $row['user_email'];
-                                                            $_SESSION['user_password'] = $row['user_password'];
-                                                            $_SESSION['user_description'] = $row['user_description'];
-                                                            $_SESSION['user_role'] = $row['user_role'];
-                                                            header("Location: index.php");
-                                                            exit();
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    ?>
                                     <!-- Form End -->
                                     <hr>
                                     <div class="text-center">
@@ -116,9 +82,6 @@ require_once "../includes/db.php";
         </div>
         <!-- Outer Row End -->
     </div>
-
-
-
 </body>
 
 </html>
