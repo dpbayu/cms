@@ -36,7 +36,7 @@
         <a class="nav-link" href="pages.php"><i class="fas fa-fw fa-table"></i><span>Pages</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="tables.html"><i class="fas fa-fw fa-table"></i><span>Profile</span></a>
+        <a class="nav-link" href="profile.php"><i class="fas fa-fw fa-table"></i><span>Profile</span></a>
     </li>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
