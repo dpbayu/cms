@@ -70,7 +70,7 @@ include_once "../includes/db.php";
                                                     <i class="fas fa-pen"></i>
                                                 </a>
                                                 <a onclick="return confirm('Are you sure delete this data ?')"
-                                                    href="delete_category.php?id=<?php echo $row['category_id']; ?>"
+                                                    href="function_category.php?id=<?php echo $row['category_id']; ?>"
                                                     class="btn btn-danger btn-sm">
                                                     <i class="fas fa-trash"></i>
                                                 </a>
@@ -106,7 +106,7 @@ include_once "../includes/db.php";
                             <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form action="function.php" method="POST">
+                            <form action="function_category.php" method="POST">
                                 <div class="form-group">
                                     <label for="category">Name Category</label>
                                     <input type="text" class="form-control" id="category" name="category_name"
