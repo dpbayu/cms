@@ -60,7 +60,7 @@ require_once "../includes/db.php";
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <button type="submit" name="submit" class="btn btn-primary btn-user btn-block">
+                                        <button type="submit" name="login" class="btn btn-primary btn-user btn-block">
                                             Login
                                         </button>
                                     </form>

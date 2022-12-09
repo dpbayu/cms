@@ -4,7 +4,7 @@ session_start();
 require "../includes/db.php";
 
 // Function login Start
-if (isset($_POST['submit'])) {
+if (isset($_POST['login'])) {
     $user_email = mysqli_escape_string($db, $_POST['user_email']);
     $user_password = mysqli_escape_string($db, $_POST['user_password']);
     if (!filter_var($user_email, FILTER_VALIDATE_EMAIL)) {
@@ -37,4 +37,18 @@ if (isset($_POST['submit'])) {
     }
 }
 // Function Login End
+
+// Function Add Category Start
+if (isset($_POST['add-category'])) {
+    $category_name = $_POST['category_name'];
+    $sql = "INSERT INTO category VALUES ('', '$category_name')";
+    if (mysqli_query($db, $sql)) {
+        header("Location: category.php?message=Data succes");
+        exit();
+    } else {
+        header("Location: category.php?message=Data failed");
+        exit();
+    }
+}
+// Function Add Category End
 ?>
